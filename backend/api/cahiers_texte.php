@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
 require_once _DIR_ . '/../config/cors.php';
 require_once _DIR_ . '/../config/database.php';
 require_once _DIR_ . '/../middleware/auth.php';

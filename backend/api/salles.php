@@ -1,15 +1,17 @@
 <?php
-require_once '../middleware/auth.php';
-require_once '../config/database.php';
+error_reporting(0);
+ini_set('display_errors', 0);
+require_once __DIR__ . '/../config/cors.php';
+require_once __DIR__ . '/../config/database.php';
 
 $db = getDBConnection();
 $method = $_SERVER['REQUEST_METHOD'];
 
 switch($method) {
     case 'GET':
-        $stmt = $db->query("SELECT * FROM salles ORDER BY nom");
+        $stmt = $db->query("SELECT * FROM salles ORDER BY code");
         $salles = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode(['success' => true, 'data' => $salles]);
+ \       echo json_encode(['success' => true, 'data' => $salles]);
         break;
 
     case 'POST':
@@ -24,3 +26,4 @@ switch($method) {
         $stmt = $db->prepare("UPDATE salles SET nom=?, capacite=?, type=? WHERE id=?");
         $stmt->execute([$data['nom'], $data['capacite'], $data['type'], $data['id']]);
         echo
+}
