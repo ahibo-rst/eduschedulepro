@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# EduSchedulePro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+EduSchedulePro est une application web de gestion des emplois du temps pour établissements d'enseignement. Elle permet de gérer les classes, les enseignants, les matières, les salles et les emplois du temps via une interface moderne et intuitive.
 
-## Available Scripts
+## Ce qui a été réalisé
 
-In the project directory, you can run:
+### 1. Configuration de l'environnement
+- Installation et configuration de Git
+- Création du compte GitHub (ahibo-rst)
+- Création du dépôt eduschedulepro sur GitHub
+- Configuration de WAMP (serveur local Apache + MySQL + PHP)
 
-### `npm start`
+### 2. Base de données MySQL
+- Création de la base de données eduschedulepro
+- 11 tables créées :
+  - classes : Licence 1, 2, 3 et Master 1, 2
+  - matieres : gestion des matières avec code et libellé
+  - enseignants : nom, prénom, email, spécialité, statut
+  - salles : code, capacité, bâtiment
+  - utilisateurs : authentification avec hash de mot de passe
+  - emploi_temps : planning des cours
+  - creneaux : créneaux horaires
+  - pointages : suivi des présences
+  - cahiers_texte : cahiers de texte des cours
+  - signatures : signatures électroniques
+  - vacations : gestion des vacations
+- Données de démonstration insérées (5 classes, 5 matières, 5 enseignants, 4 salles, 5 utilisateurs)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 3. Backend PHP (API REST)
+- config/database.php : connexion MySQL avec PDO
+- config/cors.php : gestion des headers CORS pour React
+- middleware/auth.php : vérification des tokens
+- api/login.php : authentification avec password_hash et token
+- api/classes.php : CRUD des classes
+- api/enseignants.php : CRUD des enseignants
+- api/matieres.php : CRUD des matières
+- api/salles.php : CRUD des salles
+- api/pointages.php : gestion des pointages
+- api/cahiers_texte.php : gestion des cahiers de texte
+- api/utilisateurs.php : gestion des utilisateurs
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 4. Frontend React.js
+- Page de connexion avec email et mot de passe
+- Dashboard avec menu latéral
+- Tableau de bord avec statistiques (classes, enseignants, matières, salles)
+- Pages : Classes, Enseignants, Matières, Salles, Emploi du temps
+- Styles CSS complets (sidebar, tableaux, formulaires)
 
-### `npm test`
+### 5. Connexion Frontend ↔️ Backend
+- API REST PHP connectée à React via fetch
+- Gestion des erreurs CORS résolue
+- Authentification fonctionnelle avec token
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies utilisées
+- *Frontend* : React.js, CSS3
+- *Backend* : PHP 8
+- *Base de données* : MySQL
+- *Serveur local* : WAMP64
+- *Versioning* : Git + GitHub
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prérequis
+- WAMP installé et lancé (icône verte)
+- Node.js installé
+- Git installé
+## Ce qui fonctionne
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Base de données
+- Base de données MySQL eduschedulepro créée et fonctionnelle
+- 11 tables créées avec données de démonstration
+- 5 classes (Licence 1, 2, 3 et Master 1, 2)
+- 5 enseignants, 5 matières, 4 salles, 5 utilisateurs
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Backend PHP
+- Connexion MySQL avec PDO fonctionnelle
+- CORS configuré et fonctionnel
+- Login avec authentification par token fonctionnel
+- API classes.php fonctionnelle et retourne les données
+- API enseignants, matieres, salles créées
 
-### `npm run eject`
+### Frontend React
+- Page de connexion fonctionnelle
+- Connexion réussie avec admin@isge.bf / password
+- Dashboard avec menu latéral fonctionnel
+- Tableau de bord avec statistiques affiché
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Technologies
+- React.js, PHP 8, MySQL, WAMP64, Git/GitHub
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Identifiants
+- Email : admin@isge.bf
+- Mot de passe : password
+### Étapes
+1. Cloner le dépôt :
+```bash
+git clone https://github.com/ahibo-rst/eduschedulepro.git
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
