@@ -10,7 +10,8 @@ $method = $_SERVER['REQUEST_METHOD'];
 if ($method === 'GET') {
     $stmt = $pdo->prepare("SELECT * FROM enseignants ORDER BY nom");
     $stmt->execute();
-    jsonSuccess($stmt->fetchAll());
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+echo json_encode(['success' => true, 'data' => $data]);
 }
 
 if ($method === 'POST') {

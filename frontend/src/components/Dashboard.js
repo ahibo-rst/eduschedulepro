@@ -23,11 +23,13 @@ function Dashboard({ user, onLogout }) {
       const enseignantsData = await enseignantsRes.json();
       const matieresData = await matieresRes.json();
       const sallesData = await sallesRes.json();
+      console.log('classes:', classesData);
+console.log('enseignants:', enseignantsData);
 
-      if (classesData.success) setClasses(classesData.data);
-      if (enseignantsData.success) setEnseignants(enseignantsData.data);
-      if (matieresData.success) setMatieres(matieresData.data);
-      if (sallesData.success) setSalles(sallesData.data);
+setClasses(classesData.data || []);
+setEnseignants(enseignantsData.data || []);
+setMatieres(matieresData.data || []);
+setSalles(sallesData.data || []);
     } catch (err) {
       console.error('Erreur chargement données:', err);
     }
